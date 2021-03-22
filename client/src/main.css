@@ -1,0 +1,115 @@
+body {
+    background-image: url('../src/images/background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+}
+/*----- Navbar ----*/
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.357);
+}
+#NavText {
+    margin-left: 60px;
+    font-size: 30px;
+}
+#mainLink {
+    text-decoration: none;
+}
+#mainLink:visited {
+    color: black;
+}
+#NavLoginBtn {
+    margin-right: 60px;
+    background: rgba(255, 255, 255, 0.926);
+    border-radius: 7px;
+    font-size: 20px;
+    width: 90px;
+    height: 35px;
+}
+/*-----------------*/
+
+
+/*------ main page (sign up) -----*/
+.signUpAreaContainer {
+    margin-left: 12%;
+    margin-top: 8%;
+}
+.signUpContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 7%;
+}
+#mainText {
+    font-size: 100px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: rgb(255, 255, 255);
+}
+
+#usernameInput, #emailInput, #passwordInput, #zipInput, #countyInput {
+    width: 200px;
+    height: 25px;
+}
+#emailInputLabel, #zipInputLabel {
+    margin-top:20px;
+}
+#emailInput, #zipInput {
+    margin-bottom: 20px;
+}
+
+#usernameInputLabel, #emailInputLabel, #passwordInputLabel, #zipInputLabel, #countyInputLabel {
+    color: rgb(255, 255, 255);
+    font-size: 21px;
+}
+#signUpForm {
+    width: 100%;
+}
+
+#signUpSubmitBtn {
+    margin-top: 20px;
+    width: 90px;
+    height: 25px;
+}
+#alreadyMsg { 
+    color: white;
+    font-size: 30px;
+    margin-left: 7%;
+}
+#alreadyLink {
+    text-decoration: none;
+}
+#alreadyLink:visited {
+    color:black;
+}
+
+/*---------------------*/
+
+/*----- main page (login) -------*/
+.loginAreaContainer {
+    width: 450px;
+    height: 650px;
+    margin-left: 15%;
+    margin-top: 8%;
+    background-color: rgba(255, 255, 255, 0.578);
+}
+#loginText {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 35px;
+}
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+
+/*--------news feed ---------*/
+.newsfeed-container {
+    background-image: url('./images/whitebackground.jpeg');
+}

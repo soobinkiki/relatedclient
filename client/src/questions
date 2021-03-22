@@ -1,0 +1,9 @@
+
+
+-----------front-end questions------------------------------------------------------------------------------------------
+
+1. Better to have seperated CSS files?
+
+2. Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.   ----> background image in body (error WHY?)
+    at body
+    at Home

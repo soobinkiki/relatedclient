@@ -14,18 +14,17 @@ const Login = (props) => {
     
     const [message, setMessage] = useState('')
 
-
-
     const handleSubmit = async (e) => {
         try {
           e.preventDefault()
+          console.log("submit clicked");
           // post to backend with form data
           const userInfo = {
             username: username,
-            email: email,
+            // email: email,
             password: password,
-            zip: zip,
-            county: county
+            // zip: zip,
+            // county: county
           }
     
           const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`, userInfo)
@@ -54,13 +53,11 @@ const Login = (props) => {
       // if check to see if the user is logged in, redirect to the profile
       if(props.currentUser) return <Redirect to='/newsfeed' component={ Newsfeed } currentUser={ props.currentUser }/>
 
-        
-
     return (
         <div className="loginAreaContainer">
             <p>{message}</p>
             <form onSubmit={handleSubmit}>
-                <div class="loginContainer">
+                <div className="loginContainer">
                 <h1 id="loginText">Log in to your account</h1>
                 <label id="usernameInputLabel" htmlFor='usernameInput'>Username</label>
                 <input id="usernameInput" type="text" placeholder="username" onChange={ e => setUsername(e.target.value)}></input>

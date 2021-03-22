@@ -16,19 +16,14 @@ function Home() {
         console.log('log user out!!');
     }
 
-    
 
     return (
         <div className="temp">
             <Router >
-                <header>
-        
-                    <Navbar currentUser={currentUser} handleLogout={handleLogout}/>
-                </header>
-                    <Route exact path='/' render={(props) => <SignUp {...props} />}/>
-                    <Route exact path='/login' render={(props) => <Login {...props} />}/>
-                    <Route exact path='/newsfeed' component= {Newsfeed}/>
-                
+                <Navbar currentUser={currentUser} handleLogout={handleLogout}/>
+                <Route exact path='/' render={(props) => <SignUp {...props} />}/>
+                <Route exact path='/login' render={(props) => <Login {...props} />}/>
+                <Route exact path='/newsfeed' component= {Newsfeed}/>
             </Router>
         </div>   
   );

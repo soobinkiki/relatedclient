@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
+import jwt_decode from 'jwt-decode'
+// import { Redirect } from 'react-router-dom'
+// import Newsfeed from '../postingpage/Newsfeed.jsx'
 
 const SignUp = () => {
 
@@ -9,9 +13,11 @@ const SignUp = () => {
     const [zip, setZip] = useState('')
     const [county, setCounty] = useState('')
 
-        const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+        try {
             e.preventDefault()
             
+        
             const userInfo = {
                 username: username,
                 email: email,
@@ -19,7 +25,25 @@ const SignUp = () => {
                 zip: zip,
                 county: county
             }
+
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}api-v1/users/register`, userInfo)
+            
+            const { token } = response.data
+            localStorage.setItem('jwtToken', token)
+        
+            // decode jwt and set the app state to the jwt payload
+            const decoded = jwt_decode(token)
+            console.log(decoded)
+
+        } catch (err) {
+            console.log(err);
         }
+    }
+
+
+
+
+
 
     return (
         <div>

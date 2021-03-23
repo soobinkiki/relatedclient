@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom'
 import Newsfeed from '../postingpage/Newsfeed.jsx'
 
 const Login = (props) => {
-
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -42,11 +41,11 @@ const Login = (props) => {
     
         } catch(error) {
           // if the login failed -- display a message
-          if(error.response.status === 400) {
-            setMessage('bad user name or password')
-          } else {
+          // if(error.response.status === 400) {
+          //   setMessage('bad user name or password')
+          // } else {
             console.error(error)
-          }
+          
         }
       }
     

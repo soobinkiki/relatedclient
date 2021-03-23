@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-// import { Redirect } from 'react-router-dom'
-// import Newsfeed from '../postingpage/Newsfeed.jsx'
+import Newsfeed from '../postingpage/Newsfeed.jsx'
+import { Redirect } from 'react-router-dom'
 
-const SignUp = () => {
+const SignUp = (props) => {
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -13,11 +13,12 @@ const SignUp = () => {
     const [zip, setZip] = useState('')
     const [county, setCounty] = useState('')
 
+    const [message, setMessage] = useState('')
+
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
             
-        
             const userInfo = {
                 username: username,
                 email: email,
@@ -25,29 +26,32 @@ const SignUp = () => {
                 zip: zip,
                 county: county
             }
-
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}api-v1/users/register`, userInfo)
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, userInfo)
             
             const { token } = response.data
             localStorage.setItem('jwtToken', token)
-        
+            
             // decode jwt and set the app state to the jwt payload
             const decoded = jwt_decode(token)
             console.log(decoded)
 
-        } catch (err) {
-            console.log(err);
-        }
+            props.setCurrentUser(decoded)
+
+        } catch (error) {
+            // if(error.response.status === 400) {
+            //   // set the message to be whatever it is on the server end
+            //   setMessage(error.response.data.msg)
+            // }else{
+              console.log(error)
+            }
     }
 
-
-
-
-
+    if(props.currentUser) return <Redirect to='/newsfeed'  component={ Newsfeed } currentUser={props.currentUser} />
 
     return (
         <div>
             <div className="signUpAreaContainer">
+                <p>{message}</p>
                 <form id="signUpForm" onSubmit={handleSubmit}>
                     <div className="signUpContainer">
                     <h1 id="mainText">RelateD</h1>

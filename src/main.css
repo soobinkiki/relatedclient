@@ -11,15 +11,27 @@ body {
     align-items: center;
     width: 100%;
     height: 90px;
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(255, 255, 255, 0.715);
+}
+.mainNavList {
+    display: flex;
 }
 .nav-container {
     display: flex;
     margin-right: 50px;
 }
-#NavText {
+#mainNavText {
+    font-size: 35px;
     margin-left: 60px;
-    font-size: 30px;
+}
+#NavText {
+    margin-left: 40px;
+    margin-top: 45px;
+    font-size: 20px;
+    
+}
+.NavTextContact {
+    margin-right: 70px;
 }
 #mainLink {
     text-decoration: none;
@@ -116,4 +128,18 @@ body {
 /*--------news feed ---------*/
 .newsfeed-container {
     background-image: url('./images/whitebackground.jpeg');
+}
+
+
+/*------- contact ---------*/
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.701);
+    width: 1200px;
+    height: 600px;
+    margin:auto;
+    margin-top: 5%;
+
 }

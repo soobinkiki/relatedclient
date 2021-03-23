@@ -1,29 +1,36 @@
 // import { Button } from 'react-bootstrap'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom'
+import Logo from '../../images/relatedlogo.png'
 import '../../main.css'
 
 
 const Navbar = (props) => {
     
-
-    return (
-
+    const loggedIn = (
         <div className="navlogo-container">
-            {!props.currentUser ? 
-                <Link to='/' id="mainLink"><h1 id="NavText">RelateD Logo here</h1></Link> : null}                
-            <nav className="nav-container">
-                {!props.currentUser ? 
-                    <Link to='/' id="mainLink"><h1 id="NavText">Home</h1></Link> : null}
-                {!props.currentUser ? 
-                    <Link to='/profile' id="mainLink"><h1 id="NavText">Proflile</h1></Link> : null}
-                {!props.currentUser ? 
-                    <Link to='/newsfeed' id="mainLink"><h1 id="NavText">Newsfeed</h1></Link> : null}
-                {!props.currentUser ? 
-                    <Link to='/logout' id="mainLink"><h1 id="NavText">Logout</h1></Link> : null}
+            <Link to='/' id="mainNavLink"><img id="mainNavText" src={Logo} alt="related-logo" /></Link>
+            {/* <Link to='/' id="mainNavLink"><h1 id="mainNavText">RelateD</h1></Link> */}
+            <nav className="mainNavList">
+                <Link to='/profile' id="mainLink"><h1 id="NavText">Profile</h1></Link>
+                <Link to='/newsfeed' id="mainLink"><h1 id="NavText">Newsfeed</h1></Link>
+                <Link to='/' id="mainLink" onClick={props.handleLogout}><h1 id="NavText">Logout</h1></Link>
+                <Link to='/contact' id="mainLink"><h1 id="NavText" className="NavTextContact">Contact</h1></Link>
             </nav>
         </div>
-        
+    )
+
+    const loggedOut = (
+        <div className="navlogo-container">
+            <Link to='/' id="mainNavLink"><img id="mainNavText" src={Logo} alt="related-logo" /></Link>
+            <Link to='/contact' id="mainLink"><h1 id="NavText" className="NavTextContact">Contact</h1></Link>
+        </div>
+    )
+
+    return (
+        <div>
+            {props.currentUser ? loggedIn : loggedOut}
+        </div>
     )
 }
 

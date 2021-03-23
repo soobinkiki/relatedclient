@@ -1,4 +1,7 @@
-const CenteriFrame = () => {
+import SearchBar from './SearchBar'
+import Newsfeed from './Newsfeed'
+
+const CenterIFrame = () => {
 
 
     return (
@@ -8,4 +11,4 @@ const CenteriFrame = () => {
     )
 }
 
-export default CenteriFrame
+export default CenterIFrame

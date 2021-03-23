@@ -7,6 +7,7 @@ import Navbar from './components/mainpage/Navbar.jsx'
 import SignUp from './components/mainpage/Signup.jsx'
 import Login from './components/mainpage/Login.jsx'
 import Contact from './components/mainpage/Contact.jsx'
+import Profile from './components/mainpage/Profile.jsx'
 
 import Newsfeed from './components/postingpage/Newsfeed.jsx'
 
@@ -46,7 +47,8 @@ function Home() {
                     <Route exact path='/' render={(props) => <SignUp {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
                     <Route exact path='/login' render={(props) => <Login {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
                     <Route exact path='/newsfeed' component= {Newsfeed}/>
-                    <Route exact path='/contact' component= {Contact}/>
+                    <Route exact path='/contact' render={() => <Contact />}/>
+                    <Route exact path='/profile' render={() => <Profile />}/>
             </Router>
         </div>   
     )

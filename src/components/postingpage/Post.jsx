@@ -4,6 +4,7 @@ const Post = (props) => {
     return (
         <div>
             <div>
+                {props.content}
                 {props.image}
                 <p id="userComment">{props.comment}</p>
             </div>

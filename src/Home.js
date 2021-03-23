@@ -27,7 +27,6 @@ function Home() {
         } else {
             setCurrentUser(null)
         }
-
     }, [])
 
     // deletes the jwt from local storage when the use wants to log out
@@ -39,14 +38,14 @@ function Home() {
     }
 
     return (
-        <div className="temp">
+        <div>
             <Router >
                 <header>
                     <Navbar currentUser={currentUser} handleLogout={handleLogout}/>
                 </header>
                     <Route exact path='/' render={(props) => <SignUp {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
                     <Route exact path='/login' render={(props) => <Login {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
-                    <Route exact path='/newsfeed' component= {Newsfeed}/>
+                    <Route exact path='/newsfeed' render={(props) => <Newsfeed {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
                     <Route exact path='/contact' render={() => <Contact />}/>
                     <Route exact path='/profile' render={(props) => <Profile {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
             </Router>

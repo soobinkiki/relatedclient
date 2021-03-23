@@ -22,31 +22,36 @@ body {
 }
 #mainNavText {
     font-size: 35px;
-    margin-left: 60px;
+    margin-left: 30px;
+    margin-top: -5px;
 }
 #NavText {
     margin-left: 40px;
-    margin-top: 45px;
-    font-size: 20px;
+    margin-top: 50px;
+    font-size: 23px;
     
 }
 .NavTextContact {
     margin-right: 70px;
 }
-#mainLink {
+#mainLink, #mainNavLink {
     text-decoration: none;
 }
-#mainLink:visited {
+#mainLink:hover {
+    text-decoration: overline;
+    transform: scale(1.1);
+}
+#mainLink:visited, #mainNavLink:visited {
     color: black;
 }
-#NavLoginBtn {
+/* #NavLoginBtn {
     margin-right: 60px;
     background: rgba(255, 255, 255, 0.926);
     border-radius: 7px;
     font-size: 20px;
     width: 90px;
     height: 35px;
-}
+} */
 /*-----------------*/
 
 
@@ -127,12 +132,21 @@ body {
 
 /*--------news feed ---------*/
 .newsfeed-container {
-    background-image: url('./images/whitebackground.jpeg');
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* margin-top: 0 */
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    /* background-image: url('./images/whitebackground.jpeg'); */
 }
 
 
 /*------- contact ---------*/
-.contact-container {
+.contact-container, .profile-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,5 +155,25 @@ body {
     height: 600px;
     margin:auto;
     margin-top: 5%;
-
+}
+.contact-inner-container {
+    display: flex;
+}
+#github-logo, #linkedin-logo {
+    width: 50px;
+    height: 50px;
+}
+#github-logo {
+    margin-right: 10px;
+}
+.david {
+    margin-left: 90px;
+    margin-right: 90px;
+}
+.david, .henry, .justin {
+    text-align: center;
+}
+#contactus-text {
+    font-size: 70px;
+    text-align: center;
 }

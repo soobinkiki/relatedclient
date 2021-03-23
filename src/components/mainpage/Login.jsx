@@ -6,12 +6,12 @@ import Newsfeed from '../postingpage/Newsfeed.jsx'
 
 const Login = (props) => {
     const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
+    // const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [zip, setZip] = useState('')
-    const [county, setCounty] = useState('')
+    // const [zip, setZip] = useState('')
+    // const [county, setCounty] = useState('')
     
-    const [message, setMessage] = useState('')
+    // const [message, setMessage] = useState('')
 
     const handleSubmit = async (e) => {
         try {
@@ -54,7 +54,7 @@ const Login = (props) => {
 
     return (
         <div className="loginAreaContainer">
-            <p>{message}</p>
+            {/* <p>{message}</p> */}
             <form onSubmit={handleSubmit}>
                 <div className="loginContainer">
                 <h1 id="loginText">Log in to your account</h1>
@@ -69,7 +69,6 @@ const Login = (props) => {
 
                 {/* <label id="zipInputLabel" htmlFor='zipInput'>Zipcode</label>
                 <input id="zipInput" type="zip" placeholder="zip" onChange={ e => setZip(e.target.value)}></input>
-
                 <label id="countyInputLabel" htmlFor='countyInput'>County</label>
                 <input id="countyInput" type="county" placeholder="county" onChange={ e => setCounty(e.target.value)}></input> */}
 

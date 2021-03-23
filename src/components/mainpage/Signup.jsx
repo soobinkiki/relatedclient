@@ -13,7 +13,7 @@ const SignUp = (props) => {
     const [zip, setZip] = useState('')
     const [county, setCounty] = useState('')
 
-    const [message, setMessage] = useState('')
+    // const [message, setMessage] = useState('')
 
     const handleSubmit = async (e) => {
         try {
@@ -51,7 +51,7 @@ const SignUp = (props) => {
     return (
         <div>
             <div className="signUpAreaContainer">
-                <p>{message}</p>
+                {/* <p>{message}</p> */}
                 <form id="signUpForm" onSubmit={handleSubmit}>
                     <div className="signUpContainer">
                     <h1 id="mainText">RelateD</h1>

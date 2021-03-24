@@ -43,8 +43,10 @@ return (
             </div>
             {informations.map((info, idx) => <div className="userInfo" key={idx}>
             {<Post username={info.user.username} content={info.content} tags={info.discussion_tags}
-                     create={info.createdAt}
-             />}</div>)}
+                     create={info.createdAt} commentChildren={info.comments}
+                     
+             />}</div>
+             )}
 
         </div>
         <div className="timeInNewsfeed">

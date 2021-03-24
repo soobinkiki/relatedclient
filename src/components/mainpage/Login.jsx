@@ -16,7 +16,6 @@ const Login = (props) => {
     const handleSubmit = async (e) => {
         try {
           e.preventDefault()
-          console.log("submit clicked");
           // post to backend with form data
           const userInfo = {
             username: username,

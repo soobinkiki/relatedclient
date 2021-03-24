@@ -23,6 +23,7 @@ const Newsfeed = (props) => {
                 const authHeaders =  {
                     'Authorization': token
                 }
+                console.log(authHeaders)
                 // GET /auth-locked with the auth headers
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/`, { headers: authHeaders })
                 // set the message in the state with the data from the backend

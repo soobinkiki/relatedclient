@@ -48,6 +48,7 @@ function Home() {
                     <Route exact path='/newsfeed' render={(props) => <Newsfeed {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
                     <Route exact path='/contact' render={() => <Contact />}/>
                     <Route exact path='/profile' render={(props) => <Profile {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
+                    
             </Router>
         </div>   
     )

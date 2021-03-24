@@ -27,10 +27,10 @@ const SignUp = (props) => {
                 county: county
             }
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, userInfo)
-            
+            console.log(response);
             const { token } = response.data
             localStorage.setItem('jwtToken', token)
-            
+            console.log("helloooooooooooooooooooooooooooooooooooooooooo", token);
             // decode jwt and set the app state to the jwt payload
             const decoded = jwt_decode(token)
             console.log(decoded)

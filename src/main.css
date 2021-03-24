@@ -172,11 +172,41 @@ body {
     font-size: 70px;
     text-align: center;
 }
-/* .welcomeRelated {
+
+
+/*--------- profle --------*/
+.profileWelcomeMsg {
+    font-size: 40px;
     position: absolute;
-    
-    margin-top: -10%
-} */
+    width: 100%;
+}
+#profileWelcome {
+    /* position: absolute; */
+    text-align: left;
+    margin-left: 5%;
+    margin-bottom: 0;
+
+}
+.profileInfos {
+    display: flex;
+    position: absolute;
+    font-size: 40px;
+    margin-left: 5%;
+    margin-top: 11%;
+
+}
+.userKeys {
+    margin-right: 20px;
+}
+
+.profileUpdate {
+    position:absolute;
+    margin-top: 40%
+}
+
+#aboutMe {
+    width: 500px;
+}
 
 
 
@@ -201,7 +231,8 @@ body {
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.51);
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
-
+    display: table;
+    overflow:auto;
     /* background-color:rgb(247, 243, 243) */
 }
 
@@ -225,6 +256,8 @@ body {
     width: 80%;
     margin-left: 3%;
     font-size: 22px;
+    display: contents;
+    overflow: auto;
 }
 #postUsername {
     margin-left: 2%;
@@ -232,7 +265,7 @@ body {
 
 #hr {
     width: 90%;
-    margin-top: 40%;
+    margin-top: 10%;
 }
 
 .userAndComment {

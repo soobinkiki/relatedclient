@@ -8,6 +8,7 @@ const Newsfeed = (props) => {
     // 20 objects
     const [informations, setInformations] = useState([])
 
+    
     useEffect(() =>{
         const userInfo = async function () {
             try {
@@ -44,6 +45,10 @@ return (
             {informations.map((info, idx) => <div className="userInfo" key={idx}>
             {<Post username={info.user.username} content={info.content} tags={info.discussion_tags}
                      create={info.createdAt} commentChildren={info.comments}
+                     usersWhoLiked={info.users_who_liked}
+                     currentUser={props.currentUser} 
+                     user={info.user}
+                     
                      
              />}</div>
              )}

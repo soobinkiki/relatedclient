@@ -8,11 +8,24 @@ const Post = (props) => {
     //const [commentChildren, setCommentChildren] = useState 
     const [childrenCommentArray, setChildrenCommentArray] = useState([])
     const [commentVisibility, setCommentVisibility] = useState(false)
+    const [userCanEdit, setUserCanEdit] = useState(false)
+    const [editButtons, setEditButtons] = useState([])
 
+    const updateUserCanEdit = () => {
+        console.log(props.user)
+        console.log(props.currentUser)
+        if(props.currentUser.id === props.user._id){
+            console.log("User has been authenticated to edit this post! Cognrats")
+            setUserCanEdit(true)
 
-
-
-
+            const sample_buttons =
+            <div>
+            <button>Delete</button>
+            <button>Edit</button>
+            </div> 
+            setEditButtons(sample_buttons)
+        }
+    }
     const createObjecToRenderChildren = () => {
         //console.log(props)
         //console.log(props.commentChildren)
@@ -29,7 +42,11 @@ const Post = (props) => {
 
 
                 const sampleComment = <Comment
+                    username={childrenObject[key].user.username}
                     content={childrenObject[key].content}
+                    create={childrenObject[key].createdAt}
+                    replyChildren={childrenObject[key].replies}
+                    currentUser={props.currentUser}
                     key={key}
                 />
 
@@ -42,15 +59,18 @@ const Post = (props) => {
 
         setChildrenCommentArray(comments)
 
-
-
     }
     useEffect(createObjecToRenderChildren, [])
+    useEffect(updateUserCanEdit, [])
     useEffect(createObjecToRenderChildren, [props])
     useEffect(createObjecToRenderChildren, [commentVisibility])
 
     const setCommentVisibilityToTrue = () => {
         setCommentVisibility(true)
+    }
+
+    const handleLike = () => {
+
     }
     return (
         // <div>
@@ -81,7 +101,10 @@ const Post = (props) => {
                     <p id="postContent">{props.content}</p>
                 </div>
                 <hr id="hr" />
-                <button onClick={setCommentVisibilityToTrue}>Expand Comment List</button>
+                <button onClick={setCommentVisibilityToTrue}>Expand {props.commentChildren.length} comments</button>
+                 <button onClick={handleLike}>Like Post ({props.usersWhoLiked.length} liked)</button>
+                 {editButtons}
+                
                 <div>
                     {childrenCommentArray}
                 </div>

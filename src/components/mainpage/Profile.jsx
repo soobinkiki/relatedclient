@@ -1,13 +1,16 @@
+import React from 'react'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Profileupdate from './Profileupdate.jsx'
+import { Image } from 'cloudinary-react'
 
 
 const Profile = (props) => {
 
-    const [userinfos, setUserInfos] = useState([])
     const [userkeys, setKeys] = useState([])
     const [uservalues, setUserValues] = useState([])
+
+    const [imageSelected, setImageSelected] = useState('')
 
    
     useEffect( () =>{
@@ -30,6 +33,8 @@ const Profile = (props) => {
     }, [])
 
     return (
+        <div>
+
         <div className="profile-container">
             <div className="profileWelcomeMsg">
                 <h1 id="profileWelcome">Welcome to RelateD</h1>
@@ -51,9 +56,12 @@ const Profile = (props) => {
                     })}
                 </div>
                 <div className="profileUpdate">
-                    {/* <Profileupdate /> */}
+                    <Profileupdate {...props} userkeys={userkeys} setKeys={setKeys} setUserValues={setUserValues} />
                 </div>
             </div>
+        </div>    
+
+       
         </div>
     )
 }

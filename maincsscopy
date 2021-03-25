@@ -1,0 +1,324 @@
+body {
+    background-image: url('../src/images/background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+}
+/*----- Navbar ----*/
+.navlogo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 90px;
+    background-color: rgba(255, 255, 255, 0.715);
+}
+.mainNavList {
+    display: flex;
+}
+.nav-container {
+    display: flex;
+    margin-right: 50px;
+}
+#mainNavText {
+    font-size: 35px;
+    margin-left: 30px;
+    margin-top: -5px;
+}
+#NavText {
+    margin-left: 40px;
+    margin-top: 50px;
+    font-size: 23px;
+    
+}
+.NavTextContact {
+    margin-right: 70px;
+}
+#mainLink, #mainNavLink {
+    text-decoration: none;
+}
+#mainLink:hover {
+    text-decoration: overline;
+    transform: scale(1.1);
+}
+#mainLink:visited, #mainNavLink:visited {
+    color: black;
+}
+
+#navWelcomeUser {
+    margin-top: 55px;
+    margin-right: 50px;
+}
+/* #NavLoginBtn {
+    margin-right: 60px;
+    background: rgba(255, 255, 255, 0.926);
+    border-radius: 7px;
+    font-size: 20px;
+    width: 90px;
+    height: 35px;
+} */
+
+
+
+/*------ main page (sign up) -----*/
+.signUpAreaContainer {
+    margin-left: 12%;
+    margin-top: 8%;
+}
+.signUpContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 7%;
+}
+#mainText {
+    font-size: 100px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: rgb(255, 255, 255);
+}
+
+#usernameInput, #emailInput, #passwordInput, #zipInput, #countyInput {
+    width: 200px;
+    height: 25px;
+}
+#emailInputLabel, #zipInputLabel {
+    margin-top:20px;
+}
+#emailInput, #zipInput {
+    margin-bottom: 20px;
+}
+
+#usernameInputLabel, #emailInputLabel, #passwordInputLabel, #zipInputLabel, #countyInputLabel {
+    color: rgb(255, 255, 255);
+    font-size: 21px;
+}
+#signUpForm {
+    width: 100%;
+}
+
+#signUpSubmitBtn {
+    margin-top: 20px;
+    width: 90px;
+    height: 25px;
+}
+#alreadyMsg { 
+    color: white;
+    font-size: 30px;
+    margin-left: 7%;
+}
+#alreadyLink {
+    text-decoration: none;
+}
+#alreadyLink:visited {
+    color:black;
+}
+
+
+/*----- main page (login) -------*/
+.loginAreaContainer {
+    width: 450px;
+    height: 650px;
+    margin-left: 15%;
+    margin-top: 8%;
+    background-color: rgba(255, 255, 255, 0.578);
+}
+#loginText {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 35px;
+}
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+/*------- contact ---------*/
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact-container, .profile-container {
+    background-color: rgba(255, 255, 255, 0.701);
+    width: 1200px;
+    height: 600px;
+    margin:auto;
+    margin-top: 5%;
+}
+.userAndEmail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact-inner-container {
+    display: flex;
+}
+#github-logo, #linkedin-logo {
+    width: 50px;
+    height: 50px;
+}
+#github-logo {
+    margin-right: 10px;
+}
+.david {
+    margin-left: 90px;
+    margin-right: 90px;
+}
+.david, .henry, .justin {
+    text-align: center;
+}
+#contactus-text {
+    font-size: 70px;
+    text-align: center;
+}
+
+
+/*--------- profle --------*/
+.profileWelcomeMsg {
+    font-size: 40px;
+    position: absolute;
+    width: 100%;
+}
+#profileWelcome {
+    /* position: absolute; */
+    text-align: left;
+    margin-left: 5%;
+    margin-bottom: 0;
+
+}
+.profileInfos {
+    display: flex;
+    position: absolute;
+    font-size: 31px;
+    margin-left: 5%;
+    margin-top: 11%;
+
+}
+.userKeys {
+    margin-right: 20px;
+}
+
+.profileUpdate {
+    position:absolute;
+    margin-top: 40%
+}
+
+#aboutMeText {
+    font-size: 30px;
+}
+#aboutMeArea {
+    width: 350px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.aboutMeUpdateContainer {
+    margin-top: 50px;
+}
+#aboutMeBtn {
+    background: white;
+    
+}
+#aboutMeBtn:hover{
+    cursor: pointer;
+    transform: scale(1.1)
+}
+
+
+
+
+/*--------news feed ---------*/
+.newsfeed-container {
+    display: grid;
+    grid-template-columns: 15% 15% 35% 20% 10%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    /* background-image: url('./images/whitebackground.jpeg'); */
+}
+
+.userInfo {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.51);
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
+    display: table;
+    overflow:auto;
+    /* background-color:rgb(247, 243, 243) */
+}
+
+.timeTexas {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}    
+
+
+/*--------- post ----------*/
+
+.postingContainer{
+    position: relative;
+}
+.userAndDate {
+    display: flex;
+}
+#postContent {
+    position: absolute;
+    text-align: left;
+    width: 80%;
+    margin-left: 3%;
+    font-size: 22px;
+    display: contents;
+    overflow: auto;
+}
+#postUsername {
+    margin-left: 2%;
+}
+
+#hr {
+    width: 90%;
+    margin-top: 10%;
+}
+
+.userAndComment {
+    display: flex;
+    margin-top: 20px;
+}
+#postCurrentuser{
+    margin-left: 4%;
+    margin-right: 2%;
+    font-size: 25px;
+}
+#commentArea {
+    width: 450px;
+    height: 30px;
+    border-radius: 20px;
+}
+#postInput {
+    width: 500px;
+    height: 30px;
+    border-radius: 10px;
+    margin-top: 8%;
+}
+#postInput {
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+/* ----- random ----*/
+.navInNewsfeed, .timeInNewsfeed  {
+    margin-top: 50px;
+    align-self: start;
+}
+.navInNewsfeed {
+    text-align: left;
+}

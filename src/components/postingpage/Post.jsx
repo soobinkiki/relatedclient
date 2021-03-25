@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import Comment from './Comment'
+import axios from 'axios'
+
 
 const Post = (props) => {
 
@@ -11,9 +13,9 @@ const Post = (props) => {
     const [userCanEdit, setUserCanEdit] = useState(false)
     const [editButtons, setEditButtons] = useState([])
 
+    const [usersWhoLiked, setUsersWhoLiked] = useState(props.usersWhoLiked)
+
     const updateUserCanEdit = () => {
-        console.log(props.user)
-        console.log(props.currentUser)
         if(props.currentUser.id === props.user._id){
             console.log("User has been authenticated to edit this post! Cognrats")
             setUserCanEdit(true)
@@ -27,10 +29,6 @@ const Post = (props) => {
         }
     }
     const createObjecToRenderChildren = () => {
-        //console.log(props)
-        //console.log(props.commentChildren)
-        //console.log(Object.values(props.commentChildren))
-        //console.log(childrenCommentArray)
         setChildrenCommentArray([])
 
         const childrenObject = props.commentChildren
@@ -47,7 +45,11 @@ const Post = (props) => {
                     create={childrenObject[key].createdAt}
                     replyChildren={childrenObject[key].replies}
                     currentUser={props.currentUser}
+                    user={childrenObject[key].user}
+                    commentId={childrenObject[key]._id}
+                    usersWhoLiked={childrenObject[key].users_who_liked}
                     key={key}
+                    
                 />
 
                 comments.push(sampleComment)
@@ -69,8 +71,15 @@ const Post = (props) => {
         setCommentVisibility(true)
     }
 
-    const handleLike = () => {
-
+    const handleLike = async() => {
+        const token = localStorage.getItem('jwtToken')
+                
+        const authHeaders =  {
+            'Authorization': token
+        }
+        const likedPost = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/like-the-post`, {"nothign":"nothing"},{ headers: authHeaders })
+        console.log(likedPost)
+        setUsersWhoLiked(likedPost.data.findPost.users_who_liked)
     }
     return (
         // <div>
@@ -102,7 +111,7 @@ const Post = (props) => {
                 </div>
                 <hr id="hr" />
                 <button onClick={setCommentVisibilityToTrue}>Expand {props.commentChildren.length} comments</button>
-                 <button onClick={handleLike}>Like Post ({props.usersWhoLiked.length} liked)</button>
+                 <button onClick={handleLike}>Like Post ({usersWhoLiked.length} liked)</button>
                  {editButtons}
                 
                 <div>

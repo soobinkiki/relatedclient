@@ -1,46 +1,46 @@
-// import axios from 'axios'
-// import { useState } from 'react'
+import axios from 'axios'
+import { useState } from 'react'
+import { propTypes } from 'react-bootstrap/esm/Image'
 
-// const Profileupdate = () => {
+const Profileupdate = (props) => {
 
     
+    const [aboutme, setAboutme] = useState('')
 
-//     const handleSubmit = async (e) => {
-//         try {
-//             e.preventDefault()
+    const handleSubmit = async (e) => {
+        try {
+            e.preventDefault()
   
-
-//             const updateProfile = async function () {
-//                 try {
-//                     const token = localStorage.getItem('jwtToken')
-                    
-//                     const authHeaders =  {
-//                         'Authorization': token
-//                     }
-//                     const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/profile`, { headers: authHeaders })
-//                     const datas = response.data
-    
-//                     console.log(datas);
-//                 } catch (error) {
-//                     console.log(error);
-//                 }
-//             }
+            const token = localStorage.getItem('jwtToken')
+            console.log(e.target.values)
+            const authHeaders =  {
+                'Authorization': token
+            }
+            const userRequest = {
+                'edited_profile': aboutme
+            }
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/profile`, 
+                                    userRequest, { headers: authHeaders })
+            const datas = response.data
             
-//         } catch (error) {
-//             console.log((error));
-//         }
+            props.setKeys(Object.keys(datas))
+            props.setUserValues(Object.values(datas))
+            
+            console.log(datas);
+        } catch (error) {
+            console.log((error));
+        }
+    }
    
+    return (
+        <div className="aboutMeUpdateContainer">
+            <form onSubmit={handleSubmit}>
+                <label id="aboutMeText" htmlFor="aboutMe">Update about me</label>
+                <input id="aboutMeArea" type="text" placeholder="About me" onChange={(e) => setAboutme(e.target.value)}></input>
+                <input type="submit" value="Change"></input>
+            </form>
+        </div>
+    )
+}
 
-
-//     return (
-//         <div>
-//             <form onSubmit={handleSubmit}>
-//                 <label htmlFor="aboutMe"></label>
-//                 <input id="aboutMe" type="text" placeholder="About me"></input>
-//                 <input type="submit" value="Change"></input>
-//             </form>
-//         </div>
-//     )
-// }
-
-// export default Profileupdate
+export default Profileupdate

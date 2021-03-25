@@ -290,6 +290,7 @@ body {
 }
 #postInput {
     margin-left: 5px;
+    max-width:200px;
 }
 
 /* ----- comment ----*/

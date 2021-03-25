@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "cloudinary": "^1.25.1",
+    "cloudinary-react": "^1.7.0",
     "iframe": "^1.0.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.1",

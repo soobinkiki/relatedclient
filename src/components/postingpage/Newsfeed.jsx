@@ -8,7 +8,34 @@ const Newsfeed = (props) => {
     // 20 objects
     const [informations, setInformations] = useState([])
 
-    
+    const [postText, setPostText] = useState("")
+    const [postTitle, setPostTitle] = useState("")
+    const [contentModifiedCounter, setPostCounter] = useState(0)
+
+    const submitAPost = async(e) => {
+        e.preventDefault()
+        // console.log(informations)
+        // console.log("hitting the submit orute")
+        // console.log(postText)
+        const token = localStorage.getItem('jwtToken')
+                
+        const authHeaders =  {
+            'Authorization': token
+        }
+        const newPost = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/`,{"content":postText}, { headers: authHeaders })
+        const postObject = newPost.data//.createPost
+        // console.log(newPost)
+        // const newInformations = informations.unshift(postObject)
+        // // console.log(newInformations)
+        console.log(postObject)
+        //setInformations([postObject, ...informations])
+        //console.log(informations)
+        // console.log(informations[0])
+        // console.log(informations[60])
+        //setPostCounter(postCounter + 1)
+        // console.log(newPost.data.createPost
+
+    }
     useEffect(() =>{
         const userInfo = async function () {
             try {
@@ -19,7 +46,7 @@ const Newsfeed = (props) => {
                 }
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/`, { headers: authHeaders })
                 const datas = response.data.findPosts
-                const storages = Object.values(datas)
+                const storages = Object.values(datas).reverse()
                 setInformations(storages)
                 console.log(datas);
 
@@ -28,8 +55,9 @@ const Newsfeed = (props) => {
             }
         }
         userInfo()
-    }, [props])
-   
+    }, [props])//, postCounter])
+    
+//    const postArray = informations ? 
 return (
     <div className="newsfeed-container">
         <div></div>
@@ -40,19 +68,24 @@ return (
         </div>
         <div>
             <div>
-                <input type="input" id="postInput" placeholder="Post a message here"></input>
+                {/* <label id="postSubmitLabel">New Post</label> */}
+                <form onSubmit={submitAPost}>
+
+                <input id="postInput" placeholder="Post a message here" onChange={ e => setPostText(e.target.value)}></input>
+                <input type="submit" Value="submit"/>
+                </form>
             </div>
-            {informations.map((info, idx) => <div className="userInfo" key={idx}>
-            {<Post username={info.user.username} content={info.content} tags={info.discussion_tags}
-                     create={info.createdAt} commentChildren={info.comments}
-                     usersWhoLiked={info.users_who_liked}
-                     currentUser={props.currentUser} 
-                     user={info.user}
-                     postId={info._id}
-                     
-                     
-             />}</div>
-             )}
+            {informations ?informations.map((info, idx) => <div className="userInfo" key={idx}>
+   {<Post username={info.user.username} content={info.content} tags={info.discussion_tags}
+            create={info.createdAt} commentChildren={info.comments}
+            usersWhoLiked={info.users_who_liked}
+            currentUser={props.currentUser} 
+            user={info.user}
+            postId={info._id}
+            
+            
+    />}</div>
+    ) : "loading"} //ternary operator
 
         </div>
         <div className="timeInNewsfeed">

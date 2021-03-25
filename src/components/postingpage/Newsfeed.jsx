@@ -48,6 +48,7 @@ return (
                      usersWhoLiked={info.users_who_liked}
                      currentUser={props.currentUser} 
                      user={info.user}
+                     postId={info._id}
                      
                      
              />}</div>

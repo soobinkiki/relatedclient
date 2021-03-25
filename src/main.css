@@ -292,8 +292,23 @@ body {
     margin-left: 5px;
 }
 
+/* ----- comment ----*/
+
+.commentContainer{
+    background-color:lightblue;
+    margin-top:10%;
+    margin-left:15%;
+    border: 3px solid rgba(0, 0, 0, 0.51);
 
 
+}
+.replyContainer{
+    background-color:red;
+    margin-top:3%;
+    margin-left:5%;
+    border: 1px solid rgba(0, 0, 0, 0.51);
+
+}
 
 
 

@@ -9,11 +9,11 @@ const Post = (props) => {
     // const temp = props.tags.forEach(tag => <div>#{tag}</div>)
     //const [commentChildren, setCommentChildren] = useState 
     const [childrenCommentArray, setChildrenCommentArray] = useState([])
-    const [commentVisibility, setCommentVisibility] = useState(false)
     const [userCanEdit, setUserCanEdit] = useState(false)
     const [editButtons, setEditButtons] = useState([])
-
+    const [commentText, setCommentText] = useState("")
     const [usersWhoLiked, setUsersWhoLiked] = useState(props.usersWhoLiked)
+    const [counter,setCounter] = useState(0)
 
     const updateUserCanEdit = () => {
         if(props.currentUser.id === props.user._id){
@@ -29,12 +29,14 @@ const Post = (props) => {
         }
     }
     const createObjecToRenderChildren = () => {
-        setChildrenCommentArray([])
+        // setChildrenCommentArray([])
+        console.log("function is invoked, but not state is set as yet")
 
         const childrenObject = props.commentChildren
-
-        const comments = []
-        if (commentVisibility) {
+        const comments = childrenCommentArray
+        
+        if (counter === 1) {
+            console.log("state should indeed be hit")
 
             for (let key in childrenObject) {
 
@@ -56,19 +58,21 @@ const Post = (props) => {
 
             }
         } else {
-            console.log("comments not visible!")
+            //console.log("comments not visible!")
         }
 
         setChildrenCommentArray(comments)
 
     }
-    useEffect(createObjecToRenderChildren, [])
     useEffect(updateUserCanEdit, [])
     useEffect(createObjecToRenderChildren, [props])
-    useEffect(createObjecToRenderChildren, [commentVisibility])
+    useEffect(createObjecToRenderChildren, [counter])
+
 
     const setCommentVisibilityToTrue = () => {
-        setCommentVisibility(true)
+        console.log("this is hit")
+        console.log("counter is at " + counter)
+        setCounter(counter + 1)
     }
 
     const handleLike = async() => {
@@ -77,9 +81,43 @@ const Post = (props) => {
         const authHeaders =  {
             'Authorization': token
         }
-        const likedPost = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/like-the-post`, {"nothign":"nothing"},{ headers: authHeaders })
+        const likedPost = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/add-coment`, {"nothign":"nothing"},{ headers: authHeaders })
         console.log(likedPost)
         setUsersWhoLiked(likedPost.data.findPost.users_who_liked)
+    }
+    const submitAComment = async(e) => {
+        e.preventDefault()
+        const token = localStorage.getItem('jwtToken')
+                
+        const authHeaders =  {
+            'Authorization': token
+        }
+        const newComment = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/`,{"content":commentText}, { headers: authHeaders })
+        const commentObject = newComment.data//.createPost
+        console.log(commentObject)
+        console.log(childrenCommentArray)
+        try{
+        const tempArray = childrenCommentArray
+
+        const commentToAdd =  <Comment
+                    username={commentObject.user.username}
+                    content={commentObject.content}
+                    create={commentObject.createdAt}
+                    replyChildren={[]}
+                    currentUser={props.currentUser}
+                    user={commentObject.user}
+                    commentId={commentObject._id}
+                    usersWhoLiked={[]}
+                    key={commentObject._id}
+                    
+                />
+        setChildrenCommentArray(...childrenCommentArray,commentToAdd)
+        //setChildrenCommentArray(tempArray2)
+        }
+        catch(err){
+            console.log(err)
+            console.log(childrenCommentArray)
+        }
     }
     return (
         // <div>
@@ -110,7 +148,7 @@ const Post = (props) => {
                     <p id="postContent">{props.content}</p>
                 </div>
                 <hr id="hr" />
-                <button onClick={setCommentVisibilityToTrue}>Expand {props.commentChildren.length} comments</button>
+                <button onClick={setCommentVisibilityToTrue}>Expand {childrenCommentArray ? childrenCommentArray.length : "loading"} comments</button>
                  <button onClick={handleLike}>Like Post ({usersWhoLiked.length} liked)</button>
                  {editButtons}
                 
@@ -120,8 +158,10 @@ const Post = (props) => {
                 <div className="userAndComment">
 
                     <div id="postCurrentuser">Need help</div>
-                    <form>
-                        <input type="text" id="commentArea" placeholder="Write your comment"></input>
+                    <form onSubmit={submitAComment}>
+                        <input type="text" id="commentArea" placeholder="Write your comment" onChange={e => setCommentText(e.target.value)}></input>
+                        <input type="submit" Value="submit"/>
+
                     </form>
 
 

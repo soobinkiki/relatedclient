@@ -82,7 +82,7 @@ return (
                 <input type="submit" Value="submit"/>
                 </form>
             </div>
-            {informations ?informations.map((info, idx) => <div className="userInfo" key={idx}>
+            {informations ?informations.map((info, idx) => <div className="userInfo" key={info._id}>
    {<Post username={info.user.username} content={info.content} tags={info.discussion_tags}
             create={info.createdAt} commentChildren={info.comments}
             usersWhoLiked={info.users_who_liked}

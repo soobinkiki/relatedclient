@@ -20,9 +20,9 @@ const Comment = (props) => {
             setUserCanEdit(true)
 
             const sample_buttons =
-                <div>
-                    <button>Delete</button>
-                    <button>Edit</button>
+                <div id="commentEditBtn">
+                    <button id="fourBtnEdit">Edit</button>
+                    <button id="fourBtnDelete">Delete</button>
                 </div>
             setEditButtons(sample_buttons)
         }
@@ -93,7 +93,7 @@ const Comment = (props) => {
         console.log(replyObject)
         console.log(childrenReplyArray)
         try {
-            const tempArray = childrenReplyArray
+            // const tempArray = childrenReplyArray
             const replyToAdd = <Reply
                 username={props.currentUser.username}
                 content={replyText}
@@ -104,8 +104,7 @@ const Comment = (props) => {
                 usersWhoLiked={[]}
                 key={replyObject._id}
             />
-            console.log(replyToAdd)
-            console.log(childrenReplyArray)
+
 
             if (childrenReplyArray.length >= 1) {
                 setChildrenReplyArray([...childrenReplyArray, replyToAdd])
@@ -123,20 +122,32 @@ const Comment = (props) => {
 
 
     return (
-        <div class="commentContainer">
-            <p>{props.username}</p>
-            <p> {props.create.split("T")[0]}</p>
-            <p>{props.content}</p>
-            {editButtons}
-            <button onClick={setReplyVisibilityToTrue}>Expand {props.replyChildren.length ? props.replyChildren.length : 0} Replies</button>
-            <button onClick={handleLike}>Like Comment ({usersWhoLiked.length} liked) </button>
+        <div className="commentContainer">
+            <div className="commentUserAndDate">
+                <p>{props.username} - </p>
+                <p>{props.create.split("T")[0]}</p>
+                <div className="fourBtnContainer">
+                    <div className="commentFourBtn">
+                        <button id="FourBtn" className="FourBtnSeePrev" onClick={setReplyVisibilityToTrue}>See {props.replyChildren.length ? props.replyChildren.length : 0} previous replies</button>
+                        <button id="FourBtn" onClick={handleLike}>Like ({usersWhoLiked.length} liked) </button>
+                    </div>
+                    {editButtons}
+                </div>
 
-            {childrenReplyArray}
-
-            <form onSubmit={submitAReply}>
-                <input type="text" class="replyArea" placeholder="Write your Reply" onChange={e => setReplyText(e.target.value)}></input>
+            </div>
+            <div className="replyUserAndDate">
+                <p id="replyContent">{props.content}</p>
+            </div>
+            {/* <hr id="commentHr" /> */}
+            <div>
+                {childrenReplyArray}
+            </div>
+            <form onSubmit={submitAReply} >
+                <label htmlFor="replyArea" id="labelForReplyArea">{props.currentUser.username}</label>
+                <input type="text" id="replyArea" placeholder="Add a reply..." onChange={e => setReplyText(e.target.value)}></input>
                 <input type="submit" Value="submit" />
             </form>
+            <hr id="commentHr"/>
         </div>
     )
 }

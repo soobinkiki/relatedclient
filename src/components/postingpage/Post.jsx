@@ -29,12 +29,14 @@ const Post = (props) => {
         }
     }
     const createObjecToRenderChildren = () => {
+
         // setChildrenCommentArray([])
         console.log("function is invoked, but not state is set as yet")
 
         const childrenObject = props.commentChildren
-        const comments = childrenCommentArray
+        const comments = []
         
+        console.log(props.commentChildren)
         if (counter === 1) {
             console.log("state should indeed be hit")
 
@@ -60,9 +62,13 @@ const Post = (props) => {
         } else {
             //console.log("comments not visible!")
         }
-
-        setChildrenCommentArray(comments)
-
+        try{
+        setChildrenCommentArray([...childrenCommentArray,...comments])
+        }
+        catch(err){
+            console.log(err)
+            console.log(props)
+        }
     }
     useEffect(updateUserCanEdit, [])
     useEffect(createObjecToRenderChildren, [props])
@@ -92,27 +98,35 @@ const Post = (props) => {
         const authHeaders =  {
             'Authorization': token
         }
-        const newComment = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/`,{"content":commentText}, { headers: authHeaders })
-        const commentObject = newComment.data//.createPost
+        const newComment = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/add-comment`,{"content":commentText}, { headers: authHeaders })
+        const commentObject = newComment.data.findPost
+        console.log("this is the comment ID")
+        console.log(commentObject.comments[commentObject.comments.length - 1]._id)
+        console.log("this is the comment ID")
+
         console.log(commentObject)
         console.log(childrenCommentArray)
         try{
-        const tempArray = childrenCommentArray
 
         const commentToAdd =  <Comment
-                    username={commentObject.user.username}
-                    content={commentObject.content}
-                    create={commentObject.createdAt}
+                    username={props.currentUser.username}
+                    content={commentText}
+                    create={commentObject.updatedAt}
                     replyChildren={[]}
                     currentUser={props.currentUser}
-                    user={commentObject.user}
-                    commentId={commentObject._id}
+                    user={props.currentUser}
+                    commentId={commentObject.comments[commentObject.comments.length - 1]._id}
                     usersWhoLiked={[]}
                     key={commentObject._id}
                     
                 />
-        setChildrenCommentArray(...childrenCommentArray,commentToAdd)
-        //setChildrenCommentArray(tempArray2)
+        console.log(commentToAdd)
+        if(childrenCommentArray.length>=1){
+        setChildrenCommentArray([...childrenCommentArray,commentToAdd])
+        }
+        else{
+            setChildrenCommentArray([commentToAdd])
+        } //this if/else condition found to be necessary for some reason
         }
         catch(err){
             console.log(err)
@@ -148,7 +162,7 @@ const Post = (props) => {
                     <p id="postContent">{props.content}</p>
                 </div>
                 <hr id="hr" />
-                <button onClick={setCommentVisibilityToTrue}>Expand {childrenCommentArray ? childrenCommentArray.length : "loading"} comments</button>
+                <button onClick={setCommentVisibilityToTrue}>Expand {childrenCommentArray.length || props.commentChildren.length} comments</button>
                  <button onClick={handleLike}>Like Post ({usersWhoLiked.length} liked)</button>
                  {editButtons}
                 

@@ -13,6 +13,7 @@ const Newsfeed = (props) => {
     const [contentModifiedCounter, setPostCounter] = useState(0)
 
     const submitAPost = async(e) => {
+        try{
         e.preventDefault()
         // console.log(informations)
         // console.log("hitting the submit orute")
@@ -28,12 +29,18 @@ const Newsfeed = (props) => {
         // const newInformations = informations.unshift(postObject)
         // // console.log(newInformations)
         console.log(postObject)
-        setInformations([postObject, ...informations])
+        //const tempArray = informations.reverse()
+        setInformations([ postObject,...informations ])
         //console.log(informations)
         // console.log(informations[0])
         // console.log(informations[60])
         //setPostCounter(postCounter + 1)
         // console.log(newPost.data.createPost
+
+    } catch(err){
+        console.log(err)
+
+    }
 
     }
     useEffect(() =>{
@@ -85,7 +92,7 @@ return (
             
             
     />}</div>
-    ) : "loading"} //ternary operator
+    ) : "loading"} 
 
         </div>
         <div className="timeInNewsfeed">

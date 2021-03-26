@@ -14,6 +14,54 @@ const Post = (props) => {
     const [commentText, setCommentText] = useState("")
     const [usersWhoLiked, setUsersWhoLiked] = useState(props.usersWhoLiked)
     const [counter,setCounter] = useState(0)
+    const [editedPost,setEditedPost] = useState("")
+    const [sampleEditForm, setSampleEditForm] = useState([])
+
+
+
+
+    const handleDelete = async() => {
+        const token = localStorage.getItem('jwtToken')
+                
+        const authHeaders =  {
+            'Authorization': token
+        }
+        const response = await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/delete-post`, { headers: authHeaders })
+        console.log(response.data)
+        props.setPostHasBeenDeleted(props.postHasBeenDeleted+1)
+
+    }
+    const handleEditSend = async(e) => {
+        e.preventDefault()
+        const token = localStorage.getItem('jwtToken')
+
+                
+        const authHeaders =  {
+            'Authorization': token
+        }
+        const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/edit-post`, {"content":editedPost}, { headers: authHeaders })
+        console.log(response.data)
+    }
+    const handleChange = async(e) => {
+        console.log("handle change is hit")
+        setEditedPost(e.target.value)
+        console.log(editedPost)
+
+    }
+    const handleEdit = async(e) => {
+        e.preventDefault()
+        console.log("handle edit has been clicked")
+
+        const div = 
+        <div>
+            <form onSubmit={handleEditSend}>
+            <input type="text" placeholder="Write your edited comment here" onChange={handleChange}></input>
+            <input type="submit" Value="submit"/>
+            </form>
+        </div>
+        console.log(editedPost)
+        setSampleEditForm(div)
+    }
 
     const updateUserCanEdit = () => {
         if(props.currentUser.id === props.user._id){
@@ -22,12 +70,15 @@ const Post = (props) => {
 
             const sample_buttons =
             <div>
-            <button>Delete</button>
-            <button>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleEdit}>Edit</button>
             </div> 
             setEditButtons(sample_buttons)
         }
     }
+
+
+
     const createObjecToRenderChildren = () => {
 
         // setChildrenCommentArray([])
@@ -71,7 +122,7 @@ const Post = (props) => {
         }
     }
     useEffect(updateUserCanEdit, [])
-    useEffect(createObjecToRenderChildren, [props])
+    useEffect(createObjecToRenderChildren, [])
     useEffect(createObjecToRenderChildren, [counter])
 
 
@@ -160,7 +211,10 @@ const Post = (props) => {
                 </div>
                 <div>
                     <p id="postContent">{props.content}</p>
+                    {sampleEditForm}
+
                 </div>
+
                 <hr id="hr" />
                 <button onClick={setCommentVisibilityToTrue}>Expand {childrenCommentArray.length || props.commentChildren.length} comments</button>
                  <button onClick={handleLike}>Like Post ({usersWhoLiked.length} liked)</button>

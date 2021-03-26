@@ -10,6 +10,7 @@ const Newsfeed = (props) => {
     const [postText, setPostText] = useState("")
     const [postTitle, setPostTitle] = useState("")
     const [contentModifiedCounter, setPostCounter] = useState(0)
+    const [postHasBeenDeleted, setPostHasBeenDeleted] = useState(0)
 
     const submitAPost = async(e) => {
         try{
@@ -43,6 +44,7 @@ const Newsfeed = (props) => {
 
     }
     useEffect(() =>{
+        console.log(postHasBeenDeleted)
         const userInfo = async function () {
             try {
                 const token = localStorage.getItem('jwtToken')
@@ -60,7 +62,7 @@ const Newsfeed = (props) => {
             }
         }
         userInfo()
-    }, [])//, postCounter])
+    }, [postHasBeenDeleted])//, postCounter])
     
 //    const postArray = informations ? 
 return (
@@ -87,6 +89,8 @@ return (
             currentUser={props.currentUser} 
             user={info.user}
             postId={info._id}
+            setPostHasBeenDeleted={setPostHasBeenDeleted}
+            postHasBeenDeleted={postHasBeenDeleted}
             
             
     />}</div>

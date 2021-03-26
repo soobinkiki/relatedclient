@@ -82,7 +82,7 @@ function Home() {
                     <Route exact path='/profile' render={(props) => <Profile {...props} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
             </Router>
 
-            <ImageUpload />
+
             {/* <div>
                 <h1>Upload</h1>
                 <form onSubmit={handleSubmitFile}>

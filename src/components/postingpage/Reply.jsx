@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 
@@ -37,16 +37,20 @@ const Reply = (props) => {
         setUsersWhoLiked(likedReply.data.users_who_liked)
     }
 
-
-
-    return(<div class="replyContainer">
-            <p>{props.username}</p>
-            <p> {props.create.split("T")[0]}</p>
-            <p>{props.content}</p>
-            {/* {editButtons} */}
-            <button onClick={handleLike}>Like Reply ({usersWhoLiked.length} liked) </button>
-
-    </div>)
+    return(
+        <div className="replyContainer">
+            <div className="replyUsernameAndBtn">
+                <p>{props.username}</p>
+                {/* <p>{props.create.split("T")[0]}</p> */}
+                <button onClick={handleLike} id="replyLikeBtn">Like ({usersWhoLiked.length} liked) </button>
+            </div>
+            <div className="commentUserAndDate">
+                <p id="commentContent">{props.content}</p>
+                {/* {editButtons} */}
+            </div>
+        </div>
+    )
 }
+
 
 export default Reply

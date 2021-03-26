@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { propTypes } from 'react-bootstrap/esm/Image'
+// import { propTypes } from 'react-bootstrap/esm/Image'
 
 const Profileupdate = (props) => {
 

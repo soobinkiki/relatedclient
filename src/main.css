@@ -190,7 +190,7 @@ body {
 .profileInfos {
     display: flex;
     position: absolute;
-    font-size: 40px;
+    font-size: 30px;
     margin-left: 5%;
     margin-top: 11%;
 
@@ -206,6 +206,18 @@ body {
 
 #aboutMe {
     width: 500px;
+}
+
+#aboutMeText {
+    font-size: 20px;
+    margin-right: 10px;
+}
+#aboutMeArea {
+    width: 300px;
+    height: 20px;
+    border: 1px solid rgb(255, 140, 0);
+    border-radius: 10px;
+    margin-right: 10px;
 }
 
 
@@ -264,7 +276,7 @@ body {
 }
 
 #hr {
-    width: 90%;
+    width: 95%;
     margin-top: 10%;
 }
 
@@ -274,13 +286,17 @@ body {
 }
 #postCurrentuser{
     margin-left: 4%;
-    margin-right: 2%;
-    font-size: 25px;
+    margin-right: 3%;
+    margin-top: 3px;
+    font-size: 20px;
 }
 #commentArea {
-    width: 450px;
-    height: 30px;
+    width: 430px;
+    height: 25px;
+    border: 1px solid black;
     border-radius: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 #postInput {
     width: 500px;
@@ -293,24 +309,107 @@ body {
     max-width:200px;
 }
 
+button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 /* ----- comment ----*/
 
 .commentContainer{
-    background-color:lightblue;
-    margin-top:10%;
-    margin-left:15%;
-    border: 3px solid rgba(0, 0, 0, 0.51);
+    background-color:rgb(255, 255, 255);
+    width: 90%;
+    margin: auto;
+    text-align: left;
+    margin-top: 5px;
+    /* border: 1px solid rgba(0, 0, 0, 0.51); */
+}
+.commentUserAndDate, .replyUserAndDate{
+    display: flex;
+    margin-left: 20px;
+}
+
+#expandeComment {
+    margin-left:5px;
+    margin-top: 15px;
+    height: 20px;
+}
+#commentEditBtn {
+    display: flex;
+}
+#expandPrevComment, #LikePostBtn{
+    background-color: white;
+    margin-bottom: 20px;
+    color:cornflowerblue;
+    border: none;
+}
+
+#replyContent {
+    margin-top: 0px;
+    margin-bottom: 3%;
+    margin-left: 5%;
+}
+#commentContent {
+    margin-top: 0px;
+    margin-bottom: 3%;
+    margin-left: 2%;
+}
+/*comment four buttons*/
+.commentFourBtn {
+    display: flex;
+}
+.fourBtnContainer {
+    display: flex;
+    margin-top: 15px;
+}
+#FourBtn, #commentEditBtn {
+    height: 20px;
+    background-color: white;
+    margin-bottom: 20px;
+    color:rgb(46, 172, 223);
+    border: none;
+}
+.FourBtnSeePrev {
+    margin-left: 20px;
+    margin-right: 5px;
+}
+#fourBtnDelete, #fourBtnEdit {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 1px;
+    background-color: white;
+    margin-bottom: 20px;
+    color:rgb(46, 172, 223);
+    border: none;
+}
 
 
+/*-------- reply ---------*/
+#replyArea {
+    margin-left: 2%;
+    margin-right: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 .replyContainer{
-    background-color:red;
-    margin-top:3%;
-    margin-left:5%;
-    border: 1px solid rgba(0, 0, 0, 0.51);
-
+    background-color:rgb(255, 255, 255);
+    margin-top: 0px;
+    margin-left: 3%;
 }
-
+/* #labelForReplyArea {
+    margin-left: 1%;
+} */
+.replyUsernameAndBtn {
+    display: flex;
+}
+#replyLikeBtn {
+    margin-left: 10px;
+    margin-top: 16px;
+    background-color: white;
+    margin-bottom: 20px;
+    color:rgb(46, 172, 223);
+    border: none;
+}
 
 
 
@@ -321,4 +420,10 @@ body {
 }
 .navInNewsfeed {
     text-align: left;
+}
+
+#commentHr {
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }

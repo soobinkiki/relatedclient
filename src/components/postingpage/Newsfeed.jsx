@@ -1,5 +1,4 @@
 import axios from 'axios'
-// import jwt_decode from 'jwt-decode'
 import { useState, useEffect } from 'react'
 import Post from './Post.jsx'
 
@@ -57,7 +56,6 @@ const Newsfeed = (props) => {
                 const datas = response.data.findPosts
                 const storages = Object.values(datas).reverse()
                 setInformations(storages)
-                console.log(datas);
 
             } catch (error) {
                 console.log(error);
@@ -118,31 +116,3 @@ return (
 }
 
 export default Newsfeed
-
-
-
-    
-    // if(!props.currentUser) return <Redirect to='/login' component={ Login } />
-
-
-    // const datas = [
-    //     {username: 'Justin Park', email: 'justin@gmail.com', comment: "this is awesome", image: <img id="postingImg" src={image1}></img>},
-    //     {username: 'Henry McDonald', email: 'henry1@gmail.com', comment: "what is this?", image: <img id="postingImg" src={image2}></img>},
-    //     {username: 'David Lashinsky', email: 'david@gmail.com', comment: "hey let's meet up", image: <img id="postingImg" src={image3}></img>},
-    //     {username: 'Henry Hong', email: 'henry2@gmail.com', comment: "please give me a call", image: <img id="postingImg" src={image4}></img>},
-    //     {username: 'Weston Bailey', email: 'weston@gmail.com', comment: "I know what it is", image: <img id="postingImg" src={image5}></img>},
-    //     {username: 'Colin Jaffe', email: 'colin@gmail.com', comment: "this is great information", image: <img id="postingImg" src={image6}></img>},
-    // ]
-
-    // const userInfo = datas.map((data, index) => {
-    //     return (
-    //         <div className="userInfo">
-    //                 <Post key={index}
-    //                         username={data.username}
-    //                         email={data.email}
-    //                         comment={data.comment}
-    //                         image={data.image}
-    //                 />
-    //         </div>
-    //     )  
-    // })

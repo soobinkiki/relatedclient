@@ -72,6 +72,7 @@ const Post = (props) => {
             <div>
             <button onClick={handleDelete}>Delete</button>
             <button onClick={handleEdit}>Edit</button>
+
             </div> 
             setEditButtons(sample_buttons)
         }
@@ -82,12 +83,12 @@ const Post = (props) => {
     const createObjecToRenderChildren = () => {
 
         // setChildrenCommentArray([])
-        console.log("function is invoked, but not state is set as yet")
+        // console.log("function is invoked, but not state is set as yet")
 
         const childrenObject = props.commentChildren
         const comments = []
         
-        console.log(props.commentChildren)
+        // console.log(props.commentChildren)
         if (counter === 1) {
             console.log("state should indeed be hit")
 
@@ -127,8 +128,6 @@ const Post = (props) => {
 
 
     const setCommentVisibilityToTrue = () => {
-        console.log("this is hit")
-        console.log("counter is at " + counter)
         setCounter(counter + 1)
     }
 
@@ -151,12 +150,6 @@ const Post = (props) => {
         }
         const newComment = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/add-comment`,{"content":commentText}, { headers: authHeaders })
         const commentObject = newComment.data.findPost
-        console.log("this is the comment ID")
-        console.log(commentObject.comments[commentObject.comments.length - 1]._id)
-        console.log("this is the comment ID")
-
-        console.log(commentObject)
-        console.log(childrenCommentArray)
         try{
 
         const commentToAdd =  <Comment
@@ -171,7 +164,7 @@ const Post = (props) => {
                     key={commentObject._id}
                     
                 />
-        console.log(commentToAdd)
+    
         if(childrenCommentArray.length>=1){
         setChildrenCommentArray([...childrenCommentArray,commentToAdd])
         }
@@ -192,22 +185,13 @@ const Post = (props) => {
         //         {/* <div>{props.comments}</div> */}
 
         //     </div>
-        // // </div>
 
-        // <div>
-        //     <div>
-        //         <div className="postContent">{props.content}</div>
-        //     </div>
-
-
-
-        // </div>
         <div>
 
             <div className="postingContainer">
                 <div className="userAndDate">
                     <p id="postUsername">{props.username} - </p>
-                    {<p id="postDate"> {props.create.split("T")[0]}</p>}
+                    <p id="postDate"> {props.create.split("T")[0]}</p>
                 </div>
                 <div>
                     <p id="postContent">{props.content}</p>
@@ -216,16 +200,18 @@ const Post = (props) => {
                 </div>
 
                 <hr id="hr" />
-                <button onClick={setCommentVisibilityToTrue}>Expand {childrenCommentArray.length || props.commentChildren.length} comments</button>
-                 <button onClick={handleLike}>Like Post ({usersWhoLiked.length} liked)</button>
-                 {editButtons}
+                <div className="prevCommentAndLikeBtn">
+                    <button id="expandPrevComment" onClick={setCommentVisibilityToTrue}>&#9997;See {childrenCommentArray.length || props.commentChildren.length} previous comments</button>
+                    <button id="LikePostBtn" onClick={handleLike}>&#128077;Like Post ({usersWhoLiked.length} liked)</button>
+                    {editButtons}
+                </div>
                 
                 <div>
                     {childrenCommentArray}
                 </div>
                 <div className="userAndComment">
 
-                    <div id="postCurrentuser">Need help</div>
+                    <div id="postCurrentuser">{props.currentUser.username}</div>
                     <form onSubmit={submitAComment}>
                         <input type="text" id="commentArea" placeholder="Write your comment" onChange={e => setCommentText(e.target.value)}></input>
                         <input type="submit" Value="submit"/>
@@ -234,9 +220,7 @@ const Post = (props) => {
 
 
                 </div>
-
             </div>
-
         </div>
     )
 

@@ -14,7 +14,7 @@ const Comment = (props) => {
 
 
     const updateUserCanEdit = () => {
-
+        
         if(props.currentUser.id === props.user._id){
             console.log("User has been authenticated to edit this post! Cognrats")
             setUserCanEdit(true)
@@ -86,7 +86,7 @@ const Comment = (props) => {
             <p> {props.create.split("T")[0]}</p>
             <p>{props.content}</p>
             {editButtons}
-            <button onClick={setReplyVisibilityToTrue}>Expand {props.replyChildren.length} Replies</button>
+            <button onClick={setReplyVisibilityToTrue}>Expand {childrenReplyArray? childrenReplyArray: 0} Replies</button>
             <button onClick={handleLike}>Like Comment ({usersWhoLiked.length} liked) </button>
             {childrenReplyArray}
         </div>

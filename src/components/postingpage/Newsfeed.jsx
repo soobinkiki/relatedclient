@@ -28,7 +28,7 @@ const Newsfeed = (props) => {
         // const newInformations = informations.unshift(postObject)
         // // console.log(newInformations)
         console.log(postObject)
-        //setInformations([postObject, ...informations])
+        setInformations([postObject, ...informations])
         //console.log(informations)
         // console.log(informations[0])
         // console.log(informations[60])
@@ -55,7 +55,7 @@ const Newsfeed = (props) => {
             }
         }
         userInfo()
-    }, [props])//, postCounter])
+    }, [])//, postCounter])
     
 //    const postArray = informations ? 
 return (

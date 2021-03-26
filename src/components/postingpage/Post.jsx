@@ -137,7 +137,7 @@ const Post = (props) => {
         const authHeaders =  {
             'Authorization': token
         }
-        const likedPost = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/add-coment`, {"nothign":"nothing"},{ headers: authHeaders })
+        const likedPost = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/like-the-post`, {"nothign":"nothing"},{ headers: authHeaders })
         console.log(likedPost)
         setUsersWhoLiked(likedPost.data.findPost.users_who_liked)
     }

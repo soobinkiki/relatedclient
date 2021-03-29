@@ -291,7 +291,7 @@ body {
     font-size: 20px;
 }
 #commentArea {
-    width: 430px;
+    width: auto;
     height: 25px;
     border: 1px solid black;
     border-radius: 20px;
@@ -420,6 +420,31 @@ button:hover {
 }
 .navInNewsfeed {
     text-align: left;
+}
+
+li {
+    list-style: none;
+    text-align: left;
+    margin: 20px;
+    font-size: 20px;
+}
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    color: darkcyan;
+    cursor: pointer;
+    font-size: 22px;
+    
+}
+#discussion {
+    text-align: left;
+    font-size: 40px;
+    margin-left: 50px;
+    margin-bottom: 60px;
 }
 
 #commentHr {

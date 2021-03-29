@@ -69,9 +69,9 @@ return (
     <div className="newsfeed-container">
         <div></div>
         <div className="navInNewsfeed">
-            <h1>&#10224; Home</h1>
-            <h1>&#9998; Local News</h1>
-            <h1>&#128198; Events</h1>
+            <h1>Home</h1>
+            <h1>Local News</h1>
+            <h1>Local Meetups</h1>
         </div>
         <div>
             <div>
@@ -99,16 +99,18 @@ return (
         </div>
         <div className="timeInNewsfeed">
             <div>
-                <h3>San Francisco, United States</h3> 
-                <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=medium&timezone=America%2FLos_Angeles" width="100%" height="105" frameborder="0" seamless></iframe> 
-            </div>
-            <div className="timeTexas">
-                <h3>Texas City, United States</h3>
-                <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=medium&timezone=America%2FChicago" width="100%" height="105" frameborder="0" seamless></iframe> 
-            </div>
-            <div>
-                <h3>New York City, United States</h3>
-                <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=medium&timezone=America%2FNew_York" width="100%" height="105" frameborder="0" seamless></iframe>
+                    <h1 id="discussion">#Discussion</h1>
+                <ul>
+                    <li><a href="">Awareness</a></li>
+                    <li><a href="">Living with Disabilities</a></li>
+                    <li><a href="">Wheelchair Access</a></li>
+                    <li><a href="">Kids with Special Needs</a></li>
+                    <li><a href="">Family of PTSD</a></li>
+                    <li><a href="">Family of Cystic Fibrosis</a></li>
+                    <li><a href="">Inclusion and Acceptance</a></li>
+                    <li><a href="">Special Needs Hacks</a></li>
+                    <li><a href="">Med Resources</a></li>
+                </ul>
             </div>
         </div>
     </div>

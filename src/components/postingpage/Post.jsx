@@ -5,7 +5,6 @@ import axios from 'axios'
 
 const Post = (props) => {
 
-
     // const temp = props.tags.forEach(tag => <div>#{tag}</div>)
     //const [commentChildren, setCommentChildren] = useState 
     const [childrenCommentArray, setChildrenCommentArray] = useState([])
@@ -14,7 +13,7 @@ const Post = (props) => {
     const [commentText, setCommentText] = useState("")
     const [usersWhoLiked, setUsersWhoLiked] = useState(props.usersWhoLiked)
     const [counter,setCounter] = useState(0)
-    const [editedPost,setEditedPost] = useState("")
+    const [editedPost, setEditedPost] = useState(props.content)
     const [sampleEditForm, setSampleEditForm] = useState([])
 
 
@@ -35,19 +34,20 @@ const Post = (props) => {
         e.preventDefault()
         const token = localStorage.getItem('jwtToken')
 
-                
+
         const authHeaders =  {
             'Authorization': token
         }
         const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/posts/${props.postId}/edit-post`, {"content":editedPost}, { headers: authHeaders })
         console.log(response.data)
     }
-    const handleChange = async(e) => {
-        console.log("handle change is hit")
-        setEditedPost(e.target.value)
-        console.log(editedPost)
 
-    }
+    // async function randomFunction (e) {
+        
+    //     setEditedPost(e.target.value)
+    //     console.log(editedPost);
+    // }
+
     const handleEdit = async(e) => {
         e.preventDefault()
         console.log("handle edit has been clicked")
@@ -55,13 +55,13 @@ const Post = (props) => {
         const div = 
         <div>
             <form onSubmit={handleEditSend}>
-            <input type="text" placeholder="Write your edited comment here" onChange={handleChange}></input>
-            <input type="submit" Value="submit"/>
+                <input type="text" placeholder="Write your edited comment here" onChange={e => setEditedPost(e.target.value)}></input>
+                <input type="submit" value="submit"/>
             </form>
         </div>
-        console.log(editedPost)
         setSampleEditForm(div)
     }
+    console.log(editedPost)
 
     const updateUserCanEdit = () => {
         if(props.currentUser.id === props.user._id){

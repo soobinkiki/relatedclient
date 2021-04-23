@@ -5,16 +5,13 @@ import { Redirect } from 'react-router-dom'
 import Newsfeed from '../postingpage/Newsfeed.jsx'
 
 const Login = (props) => {
-
     const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
+    // const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [zip, setZip] = useState('')
-    const [county, setCounty] = useState('')
+    // const [zip, setZip] = useState('')
+    // const [county, setCounty] = useState('')
     
-    const [message, setMessage] = useState('')
-
-
+    // const [message, setMessage] = useState('')
 
     const handleSubmit = async (e) => {
         try {
@@ -22,10 +19,10 @@ const Login = (props) => {
           // post to backend with form data
           const userInfo = {
             username: username,
-            email: email,
+            // email: email,
             password: password,
-            zip: zip,
-            county: county
+            // zip: zip,
+            // county: county
           }
     
           const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`, userInfo)
@@ -43,24 +40,22 @@ const Login = (props) => {
     
         } catch(error) {
           // if the login failed -- display a message
-          if(error.response.status === 400) {
-            setMessage('bad user name or password')
-          } else {
+          // if(error.response.status === 400) {
+          //   setMessage('bad user name or password')
+          // } else {
             console.error(error)
-          }
+          
         }
       }
     
       // if check to see if the user is logged in, redirect to the profile
       if(props.currentUser) return <Redirect to='/newsfeed' component={ Newsfeed } currentUser={ props.currentUser }/>
 
-        
-
     return (
         <div className="loginAreaContainer">
-            <p>{message}</p>
+            {/* <p>{message}</p> */}
             <form onSubmit={handleSubmit}>
-                <div class="loginContainer">
+                <div className="loginContainer">
                 <h1 id="loginText">Log in to your account</h1>
                 <label id="usernameInputLabel" htmlFor='usernameInput'>Username</label>
                 <input id="usernameInput" type="text" placeholder="username" onChange={ e => setUsername(e.target.value)}></input>
@@ -73,7 +68,6 @@ const Login = (props) => {
 
                 {/* <label id="zipInputLabel" htmlFor='zipInput'>Zipcode</label>
                 <input id="zipInput" type="zip" placeholder="zip" onChange={ e => setZip(e.target.value)}></input>
-
                 <label id="countyInputLabel" htmlFor='countyInput'>County</label>
                 <input id="countyInput" type="county" placeholder="county" onChange={ e => setCounty(e.target.value)}></input> */}
 

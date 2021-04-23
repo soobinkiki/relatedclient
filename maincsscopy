@@ -190,7 +190,7 @@ body {
 .profileInfos {
     display: flex;
     position: absolute;
-    font-size: 30px;
+    font-size: 31px;
     margin-left: 5%;
     margin-top: 11%;
 
@@ -204,20 +204,24 @@ body {
     margin-top: 40%
 }
 
-#aboutMe {
-    width: 500px;
-}
-
 #aboutMeText {
-    font-size: 20px;
-    margin-right: 10px;
+    font-size: 30px;
 }
 #aboutMeArea {
-    width: 300px;
-    height: 20px;
-    border: 1px solid rgb(255, 140, 0);
+    width: 350px;
     border-radius: 10px;
     margin-right: 10px;
+}
+.aboutMeUpdateContainer {
+    margin-top: 50px;
+}
+#aboutMeBtn {
+    background: white;
+    
+}
+#aboutMeBtn:hover{
+    cursor: pointer;
+    transform: scale(1.1)
 }
 
 
@@ -276,7 +280,7 @@ body {
 }
 
 #hr {
-    width: 95%;
+    width: 90%;
     margin-top: 10%;
 }
 
@@ -286,17 +290,13 @@ body {
 }
 #postCurrentuser{
     margin-left: 4%;
-    margin-right: 3%;
-    margin-top: 3px;
-    font-size: 20px;
+    margin-right: 2%;
+    font-size: 25px;
 }
 #commentArea {
-    width: auto;
-    height: 25px;
-    border: 1px solid black;
+    width: 450px;
+    height: 30px;
     border-radius: 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
 }
 #postInput {
     width: 500px;
@@ -306,110 +306,11 @@ body {
 }
 #postInput {
     margin-left: 5px;
-    max-width:200px;
-}
-
-button:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-}
-
-/* ----- comment ----*/
-
-.commentContainer{
-    background-color:rgb(255, 255, 255);
-    width: 90%;
-    margin: auto;
-    text-align: left;
-    margin-top: 5px;
-    /* border: 1px solid rgba(0, 0, 0, 0.51); */
-}
-.commentUserAndDate, .replyUserAndDate{
-    display: flex;
-    margin-left: 20px;
-}
-
-#expandeComment {
-    margin-left:5px;
-    margin-top: 15px;
-    height: 20px;
-}
-#commentEditBtn {
-    display: flex;
-}
-#expandPrevComment, #LikePostBtn{
-    background-color: white;
-    margin-bottom: 20px;
-    color:cornflowerblue;
-    border: none;
-}
-
-#replyContent {
-    margin-top: 0px;
-    margin-bottom: 3%;
-    margin-left: 5%;
-}
-#commentContent {
-    margin-top: 0px;
-    margin-bottom: 3%;
-    margin-left: 2%;
-}
-/*comment four buttons*/
-.commentFourBtn {
-    display: flex;
-}
-.fourBtnContainer {
-    display: flex;
-    margin-top: 15px;
-}
-#FourBtn, #commentEditBtn {
-    height: 20px;
-    background-color: white;
-    margin-bottom: 20px;
-    color:rgb(46, 172, 223);
-    border: none;
-}
-.FourBtnSeePrev {
-    margin-left: 20px;
-    margin-right: 5px;
-}
-#fourBtnDelete, #fourBtnEdit {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 1px;
-    background-color: white;
-    margin-bottom: 20px;
-    color:rgb(46, 172, 223);
-    border: none;
 }
 
 
-/*-------- reply ---------*/
-#replyArea {
-    margin-left: 2%;
-    margin-right: 5px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-.replyContainer{
-    background-color:rgb(255, 255, 255);
-    margin-top: 0px;
-    margin-left: 3%;
-}
-/* #labelForReplyArea {
-    margin-left: 1%;
-} */
-.replyUsernameAndBtn {
-    display: flex;
-}
-#replyLikeBtn {
-    margin-left: 10px;
-    margin-top: 16px;
-    background-color: white;
-    margin-bottom: 20px;
-    color:rgb(46, 172, 223);
-    border: none;
-}
+
+
 
 
 
@@ -420,35 +321,4 @@ button:hover {
 }
 .navInNewsfeed {
     text-align: left;
-}
-
-li {
-    list-style: none;
-    text-align: left;
-    margin: 20px;
-    font-size: 20px;
-}
-a {
-    text-decoration: none;
-}
-a:visited {
-    color: black;
-}
-a:hover {
-    color: darkcyan;
-    cursor: pointer;
-    font-size: 22px;
-    
-}
-#discussion {
-    text-align: left;
-    font-size: 40px;
-    margin-left: 50px;
-    margin-bottom: 60px;
-}
-
-#commentHr {
-    width: 95%;
-    margin-top: 10px;
-    margin-bottom: 20px;
 }

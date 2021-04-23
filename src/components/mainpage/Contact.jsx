@@ -24,7 +24,6 @@ const Contact = () => {
                     <a href="https://github.com/soobinkiki" target= "_blank" rel="noreferrer"><img id="github-logo" src={Github} alt="github-logo" /></a>
                     <a href="https://www.linkedin.com/in/justin-park-4b20b8206/" target= "_blank" rel="noreferrer"><img id="linkedin-logo" src={Linkedin} alt="linkedin-logo" /></a>
                     <h1> Justin Park</h1>
-                    <h1> test </h1>
                 </div>
             </div>
         </div>

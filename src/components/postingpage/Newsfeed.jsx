@@ -99,7 +99,7 @@ return (
         </div>
         <div className="timeInNewsfeed">
             <div>
-                    <h1 id="discussion">#Discussion</h1>
+                    <h1 id="discussion"># Discussion</h1>
                 <ul>
                     <li><a href="">Awareness</a></li>
                     <li><a href="">Living with Disabilities</a></li>
